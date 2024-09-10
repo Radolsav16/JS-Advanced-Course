@@ -1,0 +1,9 @@
+.container{
+    border: 2px black solid;
+    background-color: rgb(212, 200, 200);
+    
+}
+
+li{
+    color: rgb(165, 14, 14);
+}
