@@ -56,3 +56,11 @@ function circleArea(param){
 
 }
 circleArea('sjsj');
+
+
+function print (){
+    let a = 'hhh';
+    return a;
+}
+
+print();
