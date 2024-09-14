@@ -114,12 +114,21 @@ function dayOfTheWeek(day) {
 dayOfTheWeek("invalid");
 
 
-function dayInTheMohth(day,year){
+function dayInTheMohth(month,year){
 
-    //  Solving Later
+   const data = new Date(year,month,0);
+   let days = data.getDate();
+   console.log(days);
+   
 
+   
+   
+   
+   
+   
 }
 dayInTheMohth(1,2012);
+dayInTheMohth(2,2021)
 
 
 function makeRectange(num){
