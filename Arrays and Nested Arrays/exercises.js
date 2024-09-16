@@ -40,25 +40,17 @@ function rotateArray(arr, rotations) {
 }
 console.log(rotateArray(["1", "2", "3", "4"], 2));
 function extractFunc(arr) {
-  // let currBiggest = Number.MIN_SAFE_INTEGER;
-  // let newArr = [];
-  // for(let num of arr){
-  //     if(num >= currBiggest){
-  //         currBiggest = num;
-  //         newArr.push(currBiggest);
-  //     }
-  // }
-
-  // return newArr;
-  let previousVal;
-  arr.reduce((acc, val, i) => {
-    if (val < previousVal) {
-      arr.splice(i, 1);
-    }
-    previousVal = val;
-  });
-
-  return arr;
+ 
+        let biggestOne = Number.MIN_SAFE_INTEGER;
+        
+        return arr.reduce((acc,el) => {
+            if(el >= biggestOne){
+                biggestOne = el;
+                acc.push(el);
+            }
+            return acc;
+        },[]);
+ 
 }
 console.log(extractFunc([1, 3, 8, 4, 10, 12, 3, 2, 24]));
 
@@ -162,13 +154,13 @@ function tikTakGame(arr){
         [false,false,false]
     ];
 
-    function winSituation()
+    // function winSituation()
 
    for (let i = 0; i < arr.length; i++) {
     const moovments = arr[i];
     let [row , col] = moovments.split(" ");
     if(i % 2 === 0 ){
-        ticToeDashboard[row][col] = 'X'
+        // ticToeDashboard[row][col] = 'X'
     }else{
         ticToeDashboard[row][col] = 'O';
     }
