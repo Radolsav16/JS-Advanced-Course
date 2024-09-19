@@ -65,98 +65,97 @@ function carFactory(car) {
 // };
 
 let input = {
-    model: 'Opel Vectra',
-    power: 110,
-    color: 'grey',
-    carriage: 'coupe',
-    wheelsize: 17
+  model: "Opel Vectra",
+  power: 110,
+  color: "grey",
+  carriage: "coupe",
+  wheelsize: 17,
 };
 console.log(carFactory(input).engine);
 
-// function heroicInventic(input) {
-//   const result = [];
-//   for (const str of input) {
-//     let [heroName, heroLevel, itemsStr] = str.split(" / ");
-//     heroLevel = Number(heroLevel);
-//     const itemArr = itemsStr ? itemsStr.split(", ") : [];
-//     result.push({ name: heroName, level: heroLevel, items: itemArr });
-//   }
+function heroicInventory(input) {
+  const resultArr = [];
+  for (let info of input) {
+    let [name, level, items] = info.split(" / ");
+    level = Number(level);
+    items = items ? items.split(", ") : [];
+    resultArr.push({ name, level, items });
+  }
 
-//   return JSON.stringify(result);
-// }
-// console.log(
-//   heroicInventic([
-//     "Isacc / 25 / Apple, GravityGun",
-//     "Derek / 12 / BarrelVest, DestructionSword",
-//     "Hes / 1 / Desolator, Sentinel, Antara",
-//   ])
-// );
+  console.log(JSON.stringify(resultArr));
+}
+console.log(heroicInventory(["Jake / 1000 / Gauss, HolidayGrenade"]));
 
-// function lowestPriceInCities(input) {
-//   const result = {};
-//   for (let str of input) {
-//     let [town, product, productPrice] = str.split(" | ");
-//     productPrice = Number(productPrice);
-//     if (result[product]) {
-//       result[product] =
-//         productPrice < result[product].productPrice
-//           ? { town, productPrice }
-//           : result[product];
-//     }
-//     result[product] = { town, productPrice };
-//   }
+function lowestPriceInCities(input) {
+  const obj = {};
 
-//   console.log(result["Sample Product"]);
-// }
+  for (const info of input) {
+    let [town, product, price] = info.split(" | ");
+    price = Number(price);
 
-// lowestPriceInCities([
-//   "Sample Town | Sample Product | 1000",
-//   "Sample Town | Orange | 2",
-//   "Sample Town | Peach | 1",
-//   "Sofia | Orange | 3",
-//   "Sofia | Peach | 2",
-//   "New York | Sample Product | 1000.1",
-//   "New York | Burger | 10",
-// ]);
+    if (obj[product]) {
+      const currPrice = obj[product].price;
+      if (price < currPrice) {
+        obj[product] = { town, price };
+      }
+    } else {
+      obj[product] = { town, price };
+    }
+  }
 
-// function storeCatolgue(array) {
-//   const obj = {};
-//   for (const str of array) {
-//     let [name, price] = str.split(" : ");
-//     price = Number(price);
-//     let mainLetter = name[0];
+  for (let keys in obj) {
+    console.log(`${keys} -> ${obj[keys].price} (${obj[keys].town})`);
+  }
+}
 
-//     if (obj[mainLetter]) {
-//       obj[mainLetter].push({ name, price });
-//     } else {
-//       obj[mainLetter] = [{ name, price }];
-//     }
-//   }
+lowestPriceInCities([
+  "Sample Town | Sample Product | 1000",
+  "Sample Town | Orange | 2",
+  "Sample Town | Peach | 1",
+  "Sofia | Orange | 3",
+  "Sofia | Peach | 2",
+  "New York | Sample Product | 1000.1",
+  "New York | Burger | 10",
+]);
 
-//   Object.entries(obj)
-//     .sort((arrA, arrB) => arrA[0].localeCompare(arrB[0]))
-//     .forEach((el) => {
-//       const groupLetter = el[0];
-//       const arr = el[1];
-//       const sortArr = arr.sort((a, b) => a.name.localeCompare(b.name));
+function storeCatolgue(array) {
+  const obj = {};
+  for (const str of array) {
+    let [name, price] = str.split(" : ");
+    price = Number(price);
+    let mainLetter = name[0];
 
-//       console.log(groupLetter);
+    if (obj[mainLetter]) {
+      obj[mainLetter].push({ name, price });
+    } else {
+      obj[mainLetter] = [{ name, price }];
+    }
+  }
 
-//       for (let obj of sortArr) {
-//         console.log(`  ${obj.name}: ${obj.price}`);
-//       }
-//     });
-// }
-// storeCatolgue([
-//   "Appricot : 20.4",
-//   "Fridge : 1500",
-//   "TV : 1499",
-//   "Deodorant : 10",
-//   "Boiler : 300",
-//   "Apple : 1.25",
-//   "Anti-Bug Spray : 15",
-//   "T-Shirt : 10",
-// ]);
+  Object.entries(obj)
+    .sort((arrA, arrB) => arrA[0].localeCompare(arrB[0]))
+    .forEach((el) => {
+      const groupLetter = el[0];
+      const arr = el[1];
+      const sortArr = arr.sort((a, b) => a.name.localeCompare(b.name));
+
+      console.log(groupLetter);
+
+      for (let obj of sortArr) {
+        console.log(`  ${obj.name}: ${obj.price}`);
+      }
+    });
+}
+storeCatolgue([
+  "Appricot : 20.4",
+  "Fridge : 1500",
+  "TV : 1499",
+  "Deodorant : 10",
+  "Boiler : 300",
+  "Apple : 1.25",
+  "Anti-Bug Spray : 15",
+  "T-Shirt : 10",
+]);
 
 // function townsToJSON(input) {
 //   input.shift();
@@ -197,3 +196,104 @@ console.log(carFactory(input).engine);
 //   "| Sofia | 42.696552 | 23.32601 |",
 //   "| Beijing | 39.913818 | 116.363625 |",
 // ]));
+
+function rectangle(width, height, color) {
+  // let  colorStr = color;
+  // colorStr =  color[0].toUpperCase() + color.substring(1);
+  return {
+    width,
+    height,
+    color,
+    calcArea: () => {
+      return width * height;
+    },
+  };
+}
+rectangle();
+
+let rect = rectangle(4, 5, "red");
+console.log(rect.width);
+console.log(rect.height);
+console.log(rect.color);
+console.log(rect.calcArea());
+
+function createSortedList() {
+  const obj = {
+    update: () => {
+      obj.size = obj._arr.length;
+      obj._arr.sort((a, b) => a - b);
+    },
+
+    add: (el) => {
+      obj._arr.push(el);
+      obj.update();
+    },
+    remove: (index) => {
+      obj._arr.splice(index, 1);
+      obj.update();
+    },
+    get: (index) => {
+      return obj._arr[index];
+    },
+    _arr: [],
+    size: 0,
+  };
+
+  return obj;
+}
+createSortedList();
+
+let list = createSortedList();
+list.add(5);
+list.add(6);
+list.add(7);
+console.log(list.get(1));
+list.remove(1);
+console.log(list.get(1));
+
+function solve() {
+  const heroes = {
+    mage: (name) => {
+      const obj = {
+        name,
+        health: 100,
+        mana: 100,
+        cast: (spell) => {
+          obj.mana--;
+          console.log(`${obj.name} cast ${spell}`);
+        },
+      };
+      return obj;
+    },
+    fighter: (name) => {
+      const obj = {
+        name,
+        health: 100,
+        stamina: 100,
+        fight: () => {
+          obj.stamina--;
+          console.log(`${obj.name} slashes at the foe!`);
+        },
+      };
+      return obj;
+    },
+  };
+
+  return heroes;
+}
+solve();
+
+let create = solve();
+const scorcher = create.mage("Scorcher");
+scorcher.cast("fireball");
+scorcher.cast("thunder");
+scorcher.cast("light");
+
+const scorcher2 = create.fighter("Scorcher 2");
+scorcher2.fight();
+
+console.log(scorcher2.stamina);
+console.log(scorcher.mana);
+
+
+
