@@ -21,24 +21,14 @@
     </div>
     <script>
         function fromJSONToHTMLTable(input){
-
-            const validInput = JSON.parse(input);
-            let html = `
+            const originalInput = JSON.parse(input);
+            
+            return `
             <table>
-               
-                
-            </table>
-            `
-
-            for(let obj of validInput){
-                html +=  `<tr>${Object.keys(obj).map((key) => `<th>${key}</th>`).join("")}</tr>`
-                html += `<tr>${Object.values(obj).map((val)=>`<td>${val}</td>`).join("")}</tr>`
-            }
-
-
-            return html;
-
-         
+            <tr><th>Name</th><th>Score</th></tr>
+            ${originalInput.map(({Name,Price}) => `<tr><td>${Name}</td><td>${Price}</td></tr>`).join("")}
+            </table>`;
+            
         }
         window.onload = function(){
             let container = document.getElementById('wrapper');
