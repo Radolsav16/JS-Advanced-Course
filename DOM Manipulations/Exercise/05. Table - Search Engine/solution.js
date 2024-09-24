@@ -1,33 +1,26 @@
 function solve() {
-   document.querySelector('#searchBtn').addEventListener('click', onClick);
+  document.querySelector("#searchBtn").addEventListener("click", onClick);
 
-   function onClick() {
-     const tdList  = Array.from(document.querySelectorAll('td')).slice(1);
-     const inputEl = document.querySelector('#searchField');
-     const inputText = inputEl.value.toLowerCase()
+  function onClick() {
+    const tableRows = document.querySelectorAll("table tbody tr");
+    const inputEl = document.querySelector("#searchField");
+    const searchStr = inputEl.value.toLowerCase();
 
-     if(!inputText) return;
+    if(!searchStr) return;
+    
+    for (let el of Array.from(tableRows)) {
+      el.classList.remove("select");
+    }
 
-     tdList.forEach(el => {
-         const parentEl = el.parentElement;
-         parentEl.classList.remove();
-   })
+    for (let el of Array.from(tableRows)
+   
+   ) {
+      const row = el.innerText.toLowerCase();
+      if (row.includes(searchStr)) {
+          el.classList.add("select");
+      }
+    }
 
-      
-     
-      tdList.forEach(el => {
-         if(el.textContent.indexOf(inputText) >= 0){
-            const parentEl = el.parentElement;
-            parentEl.classList.toggle('select');
-         }
-      });
-
-
-      inputEl.value = '';
-
-     
-
-     
-
-   }
+    inputEl.value = "";
+  }
 }
