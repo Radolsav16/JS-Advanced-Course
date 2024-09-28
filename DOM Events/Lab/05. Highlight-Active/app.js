@@ -1,3 +1,5 @@
 function focused() {
-    console.log('TODO:...');
+    const div  = document.querySelector('div');
+    const divs = Array.from(div.children);
+    
 }
