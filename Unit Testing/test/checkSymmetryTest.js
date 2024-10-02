@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { isSymmetric } from "../checkSymmetry.js";
+import { isSymmetric } from "../Unit Testting Lab/checkSymmetry.js";
 
 describe('IsSymetric',function(){
     it('argument is array',()=>{

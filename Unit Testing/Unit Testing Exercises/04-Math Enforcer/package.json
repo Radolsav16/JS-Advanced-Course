@@ -1,0 +1,19 @@
+{
+  "name": "04-math-enforcer",
+  "version": "1.0.0",
+  "main": "mathEnforcer.js",
+  "type": "module",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "RT",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3"
+  }
+}
