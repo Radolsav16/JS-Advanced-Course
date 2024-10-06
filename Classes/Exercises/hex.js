@@ -11,15 +11,20 @@ class Hex {
         let hexValue = this.value.toString(16);
         return '0x' + hexValue.toUpperCase();
     }
+
      plus(number) {
-        number = parseInt(number,16);
-        this.value += number;
-        return new Hex(this.value);
+        if(typeof(number) === 'number'){
+            return new Hex(this.value + number)
+        }else {
+            return new Hex (this.value + number.value);
+        }
      }
      minus(number) {
-        number = parseInt(number,16);
-        this.value -= number;
-        return new Hex(this.value);
+        if(typeof(number) === 'number'){
+            return new Hex(this.value - number)
+        }else {
+            return new Hex (this.value  - number.value);
+        }
      }
      parse(string){
         return parseInt(string,16);
