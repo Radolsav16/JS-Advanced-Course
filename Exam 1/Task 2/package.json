@@ -1,0 +1,19 @@
+{
+  "name": "task-2",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "recipeSelection.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3"
+  }
+}
