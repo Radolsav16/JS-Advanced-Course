@@ -10,6 +10,10 @@ function solve() {
   const preview = document.querySelector(".class-info");
   const confrimUl = document.querySelector(".confirm-class");
 
+  function reloadMethod(){
+    location.reload();
+  }
+
   function resetInputsField() {
     nameEl.value = "";
     emailEl.value = "";
@@ -102,7 +106,7 @@ function solve() {
         button.textContent = "Done";
 
         button.addEventListener("click", () => {
-          location.reload();
+          reloadMethod()
         });
 
         document.body.appendChild(h1);

@@ -56,6 +56,46 @@ describe('Test food delivery object functionality',function(){
     })
 
     describe('test calculateOrderCost functionality',function(){
-        
+        it('has wrong shipping Input',()=>{
+            expect(()=>foodDelivery.calculateOrderCost({},[],false)).to.throw("Invalid Information!");
+            expect(()=>foodDelivery.calculateOrderCost('str',[],false)).to.throw("Invalid Information!");
+            expect(()=>foodDelivery.calculateOrderCost(1,[],false)).to.throw("Invalid Information!");
+            expect(()=>foodDelivery.calculateOrderCost(null,[],false)).to.throw("Invalid Information!");
+            expect(()=>foodDelivery.calculateOrderCost(undefined,[],false)).to.throw("Invalid Information!");
+        })
+
+        it('has wrong addons Input',()=>{
+            expect(()=>foodDelivery.calculateOrderCost([],'str',false)).to.throw("Invalid Information!");
+            expect(()=>foodDelivery.calculateOrderCost([],{},false)).to.throw("Invalid Information!");
+            expect(()=>foodDelivery.calculateOrderCost([],undefined,false)).to.throw("Invalid Information!");
+            expect(()=>foodDelivery.calculateOrderCost([],false,false)).to.throw("Invalid Information!");
+            expect(()=>foodDelivery.calculateOrderCost([],2,false)).to.throw("Invalid Information!");
+        })
+
+        it('has wrong discount Input',()=>{
+            expect(()=>foodDelivery.calculateOrderCost([],[],'str')).to.throw("Invalid Information!");
+            expect(()=>foodDelivery.calculateOrderCost([],[],1)).to.throw("Invalid Information!");
+            expect(()=>foodDelivery.calculateOrderCost([],[],null)).to.throw("Invalid Information!");
+            expect(()=>foodDelivery.calculateOrderCost([],[],undefined)).to.throw("Invalid Information!");
+            expect(()=>foodDelivery.calculateOrderCost([],[],{})).to.throw("Invalid Information!");
+        })
+
+        it('has discount',()=>{
+            const shipping = ["standard","standard",'express'];
+            const addons = ['sauce','sauce','sauce','sauce'];
+            expect(foodDelivery.calculateOrderCost(shipping,addons,true)).to.be.equal('You spend $12.75 for shipping and addons with a 15% discount!');  
+        })
+
+        it('hasnt have discount',()=>{
+            const shipping = ["standard","standard",'express'];
+            const addons = ['sauce','sauce','sauce'];
+            expect(foodDelivery.calculateOrderCost(shipping,addons,false)).to.be.equal('You spend $14.00 for shipping and addons!');  
+        })
+
+        it('has test if dont have somethink in arrays',()=>{
+            expect(foodDelivery.calculateOrderCost([],[],false)).to.be.equal('You spend $0.00 for shipping and addons!');  
+            expect(foodDelivery.calculateOrderCost([],[],true)).to.be.equal('You spend $0.00 for shipping and addons with a 15% discount!');  
+
+        })
     })
 })

@@ -53,7 +53,7 @@ function solution() {
     pTeam.textContent = `Assigned to: ${input[3]}`;
 
     const pDescription = document.createElement("p");
-    pDescription.textContent = `"Description: ${input[4]}"`;
+    pDescription.textContent = `'Description: ${input[4]}'`;
 
     article.appendChild(pEmployee);
     article.appendChild(pUrgency);
@@ -85,7 +85,6 @@ function solution() {
     });
 
     buttonCountinue.addEventListener("click", () => {
-      buttonAdd.disabled = false;
       previewSection.removeChild(li);
       li.removeChild(buttonEdit);
       li.removeChild(buttonCountinue);
@@ -109,6 +108,7 @@ function solution() {
         resolvedSection.appendChild(li);
 
         buttonClear.addEventListener("click", () => {
+          buttonAdd.disabled = false;
           resolvedSection.removeChild(li);
         });
       });
